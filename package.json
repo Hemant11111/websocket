@@ -9,5 +9,8 @@
     "express": "~4.16.1",
     "http": "^0.0.1-security",
     "ws": "^8.8.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
