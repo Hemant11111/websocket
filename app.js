@@ -4,10 +4,15 @@ const server = require('http').createServer(app);
 const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({server});
+let lastMessage = null;
 
 wss.on('connection', function connection(ws) {
+    if (lastMessage) {
+        ws.send(lastMessage);
+    }
     ws.on('message', function incoming(message) {
         message = message.toString();
+        lastMessage = message;
         console.log('received: %s', message);
         console.log('number of clients', wss.clients.size);
 
